@@ -10,7 +10,7 @@ import numpy as np
 load_dotenv()
 
 # Retrieve OpenAI API key from environment variables
-openai.api_key='sk-proj-SDwUnbVqB76uGovh4cYiT3BlbkFJj6UjJvINUa9cLEFGfNbv'
+openai.api_key=''
 
 if not openai.api_key:
     raise ValueError("OpenAI API key not found. Set the OPENAI_API_KEY environment variable.")
@@ -18,7 +18,7 @@ if not openai.api_key:
 # Set up the speech recognition and text-to-speech engines
 r = sr.Recognizer()
 engine = pyttsx3.init() 
-engine.setProperty('rate', 170 ) 
+engine.setProperty('rate', 170) 
 voices = engine.getProperty('voices')
 rate = engine.getProperty('rate')
 volume = engine.getProperty('volume')
