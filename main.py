@@ -1,15 +1,8 @@
-import os
 import openai
-from dotenv import load_dotenv
-import time
 import speech_recognition as sr
 import pyttsx3
 import numpy as np
 
-# Load environment variables from .env file
-load_dotenv()
-
-# Retrieve OpenAI API key from environment variables
 openai.api_key=''
 
 if not openai.api_key:
@@ -19,9 +12,6 @@ if not openai.api_key:
 r = sr.Recognizer()
 engine = pyttsx3.init() 
 engine.setProperty('rate', 170) 
-voices = engine.getProperty('voices')
-rate = engine.getProperty('rate')
-volume = engine.getProperty('volume')
 name = "Zavi"
 greetings = [f"Hello, this is {name}. How may I assist you today?"]
 
@@ -30,7 +20,7 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
-# Listen for the wake word "yes"
+# Listen for the wake word "hello"
 def listen_for_wake_word(source):
     print("Listening for 'Hello'...")
     while True:
@@ -96,6 +86,11 @@ def listen_and_respond(source):
         print("Listening for next command or 'stop' to end...")
 
 # Use the default microphone as the audio source
+
+if __name__ == "__main__":
+    print("initializing Zavi ")
+    speak("initializing Zavi ")
+    
 with sr.Microphone() as source:
     r.adjust_for_ambient_noise(source, duration=1)  # Adjust for ambient noise
     listen_for_wake_word(source)
